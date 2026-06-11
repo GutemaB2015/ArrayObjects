@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects and Array in JS</title>
+</head>
+<body>
+            <input type="text" id="name" placeholder="Enter your name">
+            <input type="number" id="marks">
+            <button id="addstudent">Add Student</button>
+            <button id="showstudent">Show Students</button>
+            <h2 id="showarea"></h2>
+            <script>
+                const students = [];
+                const addstudents = document.getElementById('addstudent');
+                const showstudent = document.getElementById('showstudent');
+                const showarea = document.getElementById('showarea');
+                addstudents.addEventListener('click', () => {
+                    const name = document.getElementById('name').value;
+                    const marks = document.getElementById('marks').value;
+                    const student = {
+                        name: name,
+                        marks: marks
+                    };
+                    students.push(student);
+                    showarea.innerHTML = 'Student added!';
+                });
+                showstudent.addEventListener('click', () => {
+                    showarea.innerHTML = '';
+                for (const student of students){
+                    showarea.innerHTML = `${student.name} - ${student.marks} <br>`;
+                    }
+                });
+            </script>
+</body>
+</html>
