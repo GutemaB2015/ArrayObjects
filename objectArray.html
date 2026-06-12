@@ -11,12 +11,14 @@
             <button id="addstudent">Add Student</button>
             <button id="showstudent">Show Students</button>
             <button id="countstatus">Count Status</button>
+            <button id="topbtn">Top Student</button>
             <h2 id="showarea"></h2>
             <script>
                 const students = [];
                 const addstudents = document.getElementById('addstudent');
                 const showstudent = document.getElementById('showstudent');
                 const countstatus = document.getElementById('countstatus');
+                const topbtn = document.getElementById('topbtn');
                 const showarea = document.getElementById('showarea');
                 addstudents.addEventListener('click', () => {
                     const name = document.getElementById('name').value;
@@ -50,6 +52,17 @@
                     }
                     showarea.innerHTML = `Passed: ${passed} <br> Failed: ${failed}`;
                     });
+                topbtn.addEventListener('click', () =>{
+                    let topmark = 0;
+                    let topstudent = '';
+                    for (student of students){
+                        if (student.marks > topmark){
+                            topmark = student.marks;
+                            topstudent = student.name;
+                        }
+                    }
+                    showarea.innerHTML = `Top Student: ${topstudent} <br>  Marks: ${student.marks}`;
+                });
             </script>
 </body>
 </html>
