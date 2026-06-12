@@ -7,7 +7,7 @@
 </head>
 <body>
             <input type="text" id="name" placeholder="Enter your name">
-            <input type="number" id="marks">
+            <input type="number" id="marks" placeholder="Enter your mark">
             <button id="addstudent">Add Student</button>
             <button id="showstudent">Show Students</button>
             <h2 id="showarea"></h2>
@@ -18,7 +18,7 @@
                 const showarea = document.getElementById('showarea');
                 addstudents.addEventListener('click', () => {
                     const name = document.getElementById('name').value;
-                    const marks = document.getElementById('marks').value;
+                    const marks = Number(document.getElementById('marks').value);
                     const student = {
                         name: name,
                         marks: marks
@@ -29,7 +29,11 @@
                 showstudent.addEventListener('click', () => {
                     showarea.innerHTML = '';
                 for (const student of students){
-                    showarea.innerHTML = `${student.name} - ${student.marks} <br>`;
+                    if (student.marks >= 50){
+                    showarea.innerHTML += `${student.name} - 'Passed' <br>`;
+                    } else {
+                    showarea.innerHTML += `${student.name} - Failed <br>`;
+                    }
                     }
                 });
             </script>
