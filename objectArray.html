@@ -10,11 +10,13 @@
             <input type="number" id="marks" placeholder="Enter your mark">
             <button id="addstudent">Add Student</button>
             <button id="showstudent">Show Students</button>
+            <button id="countstatus">Count Status</button>
             <h2 id="showarea"></h2>
             <script>
                 const students = [];
                 const addstudents = document.getElementById('addstudent');
                 const showstudent = document.getElementById('showstudent');
+                const countstatus = document.getElementById('countstatus');
                 const showarea = document.getElementById('showarea');
                 addstudents.addEventListener('click', () => {
                     const name = document.getElementById('name').value;
@@ -36,6 +38,18 @@
                     }
                     }
                 });
+                countstatus.addEventListener('click', () =>{
+                    let passed = 0;
+                    let failed = 0;
+                    for (const student of students) {
+                        if (student.marks >= 50) {
+                            passed++;
+                        } else {
+                            failed++;
+                        }
+                    }
+                    showarea.innerHTML = `Passed: ${passed} <br> Failed: ${failed}`;
+                    });
             </script>
 </body>
 </html>
